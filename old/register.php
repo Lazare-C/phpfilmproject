@@ -32,7 +32,7 @@
 
 <?php
 define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__ROOT__.'bd.php');
+require_once(__ROOT__ . 'bd.php');
 
 $var = connectDB;
 

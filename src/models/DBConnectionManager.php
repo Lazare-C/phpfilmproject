@@ -2,11 +2,14 @@
 //TODO: FAIRE LA DBConnectionManager
 class DBConnectionManager
 {
-    function connectDB() {
-        $host = '192.168.189.128';
-        $user = 'root';
-        $db = 'phpdb';
-        $pwd = 'php';
+    /**
+     * @return PDO|void
+     */
+    function connectDB() : PDO {
+        $host = getenv('HOST') ?: "127.0.0.1";
+        $user = getenv('USER') ?: "root";
+        $pwd = getenv('PSW') ?: "password";
+        $db = getenv('DB') ?: "db";
         try {
             $bdd = new PDO('mysql:host='.$host.';dbname='.$db.';charset=utf8', $user,$pwd);
             return $bdd;

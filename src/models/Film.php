@@ -8,24 +8,10 @@ class Film
         $nb_vote,
         $score;
 
-    /**
-     * @param $id
-     * @param $nom
-     * @param $annee
-     * @param $nb_vote
-     * @param $score
-     */
-    public function __construct($id, $nom, $annee, $nb_vote, $score)
-    {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->annee = $annee;
-        $this->nb_vote = $nb_vote;
-        $this->score = $score;
-    }
 
 
-    public function __constructWithArray(array $donnees)
+
+    public function __construct(array $donnees)
     {
         $this->hydrate($donnees);
     }
@@ -52,30 +38,47 @@ class Film
         return !empty($this->nom);
     }
 
-    public function nom()
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
     {
         return $this->nom;
     }
 
-    public function annee()
+    /**
+     * @return mixed
+     */
+    public function getAnnee()
     {
         return $this->annee;
     }
 
-    public function score()
-    {
-        return $this->score;
-    }
-
-    public function vote()
+    /**
+     * @return mixed
+     */
+    public function getNbVote()
     {
         return $this->nb_vote;
     }
 
-    public function id()
+    /**
+     * @return mixed
+     */
+    public function getScore()
     {
-        return $this->id;
+        return $this->score;
     }
+
+
 
 
     public function setId($id)
