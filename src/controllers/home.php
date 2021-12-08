@@ -4,7 +4,7 @@
  *@param string $layout
  *@param string $title
  */
-$layout =require ( $_SERVER['DOCUMENT_ROOT'].'/views/layout/default.php');
+$layout =require ($_SERVER['DOCUMENT_ROOT'].'/views/layout/default.php');
 
 $func = function() use ($layout) {
 

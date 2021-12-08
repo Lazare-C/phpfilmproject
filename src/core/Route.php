@@ -7,11 +7,12 @@ class Route
     private static $pathNotFound = null;
     private static $methodNotAllowed = null;
 
-    public static function add($expression, $function, $method = 'get')
+    public static function add($expression, $function,$query = [],  $method = 'get')
     {
         array_push(self::$routes, array(
             'expression' => $expression,
             'function' => $function,
+            'query' => $query,
             'method' => $method
         ));
     }
@@ -56,7 +57,13 @@ class Route
                 if (strtolower($method) == strtolower($route['method'])) {
                     $route_match_found = true;
 
-                    foreach ($route['function'] as $function) {
+
+                    //si on utilise pas de middleware
+                    if(gettype($route['function']) != "array"){
+                        $route['function'] = array($route['function']);
+                    }
+
+                    foreach ( $route['function'] as $function) {
                         if (call_user_func_array($function, array([""])) == false) {
                             break;
                         }
