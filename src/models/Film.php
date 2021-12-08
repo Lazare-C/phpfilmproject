@@ -8,20 +8,22 @@ class Film
         $nb_vote,
         $score;
 
-
-
-
     public function __construct(array $donnees)
     {
         $this->hydrate($donnees);
     }
 
 
-
-
-
     public function hydrate(array $donnees)
     {
+
+        $this->setNom($donnees['nom']);
+        $this->setAnnee($donnees['annee']);
+        $this->setNb_vote($donnees['nb_vote']);
+        $this->setId($donnees['id']);
+
+
+
         foreach ($donnees as $key => $value)
         {
             $method = 'set'.ucfirst($key);
@@ -99,9 +101,16 @@ class Film
         }
     }
 
-    public function setNb_vote()
+    public function setAnnee($annee)
     {
-        $this->nb_vote++;
+        if($annee > 1800){
+            $this->annee = $annee;
+        }
+    }
+
+    public function setNb_vote($nb_vote)
+    {
+        $this->nb_vote = $nb_vote;
     }
 
     public function setScore($score)

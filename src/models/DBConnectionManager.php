@@ -2,6 +2,20 @@
 //TODO: FAIRE LA DBConnectionManager
 class DBConnectionManager
 {
+
+
+    /**
+     * @var PDO
+     */
+    protected $pdo;
+
+
+    public function __construct()
+    {
+        $pdo = $this->connectDB();
+    }
+
+
     /**
      * @return PDO|void
      */
@@ -11,10 +25,19 @@ class DBConnectionManager
         $pwd = getenv('PSW') ?: "password";
         $db = getenv('DB') ?: "db";
         try {
-            $bdd = new PDO('mysql:host='.$host.';dbname='.$db.';charset=utf8', $user,$pwd);
-            return $bdd;
+            return new PDO('mysql:host='.$host.';dbname='.$db.';charset=utf8', $user,$pwd);
         }catch (Exception $e) {
             exit('Erreur : '.$e->getMessage());
         }
     }
+
+    /**
+     * @return PDO
+     */
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
+
+
 }

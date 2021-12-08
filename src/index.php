@@ -1,5 +1,20 @@
 <?php
+include_once ("controllers/Route.php");
 
+include_once('controllers/home.php');
+
+
+
+Route::add('/login',function(){
+    echo 'Welcome :-)';
+});
+
+Route::run('/');
+
+
+
+
+/*
 switch ($_SERVER['REQUEST_URI']) {
     case '/film':
         include 'film.php';
@@ -20,7 +35,8 @@ switch ($_SERVER['REQUEST_URI']) {
         include 'update_film.php';
         break;
     default:
-        include 'film.php';
+        include 'controllers/home.php';
         break;
-}
+}*/
 ?>
+

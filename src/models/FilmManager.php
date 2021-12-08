@@ -1,7 +1,11 @@
 <?php
-class PersonnagesManager
+class FilmManager
 {
-  private $_db; // Instance de PDO
+
+    /**
+     * @var PDO $_db
+     */
+    private $_db; // Instance de PDO
   public function __construct($db)
   {
     $this->_db = $db;
@@ -19,13 +23,14 @@ class PersonnagesManager
     $q->execute();
   }
 
-  public function delete(Film $film)
+  public function delete(Film $film): bool
   {
       $q = $this->_db->prepare('DELETE FROM film(WHERE id = vid) VALUES(:vid');
       $q->bindValue(':vid', $film->getId());
+      return $q->execute();
   }
 
-  public function get($id)
+  public function get($id): Film
   {
     $id = (int) $id;
 
@@ -35,15 +40,16 @@ class PersonnagesManager
     return new Film($donnees);
   }
 
-  public function getList(): FilmRepository
+  public function getList(): Film
   {
-    $films = new FilmRepository;
+      /* @var Film $films */
+      $films = [];
 
     $q = $this->_db->query('SELECT * FROM film ORDER BY nom');
 
-    while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+      while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {
-      $films->add(new Film($donnees));
+      $films[] = new Film($donnees);
     }
 
     return $films;
@@ -53,11 +59,11 @@ class PersonnagesManager
   {
     $q = $this->_db->prepare('UPDATE film SET nom = :nom, annee = :annee, score = :score, vote = :vote WHERE id = :id');
 
-    $q->bindValue(':nom', $film->nom());
-    $q->bindValue(':annee', $film->annee());
-    $q->bindValue(':score', $film->score());
-    $q->bindValue(':vote', $film->vote());
-    $q->bindValue(':id', $film->id());
+    $q->bindValue(':nom', $film->getNom());
+    $q->bindValue(':annee', $film->getAnnee());
+    $q->bindValue(':score', $film->getScore());
+    $q->bindValue(':vote', $film->getNbVote());
+    $q->bindValue(':id', $film->getId());
 
     $q->execute();
   }
