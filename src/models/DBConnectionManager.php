@@ -22,7 +22,7 @@ class DBConnectionManager
     function connectDB() : PDO {
         $host = getenv('HOST') ?: "127.0.0.1";
         $user = getenv('USER') ?: "root";
-        $pwd = getenv('PSW') ?: "password";
+        $pwd = getenv('PSW') ?: "";
         $db = getenv('DB') ?: "db";
         try {
             return new PDO('mysql:host='.$host.';dbname='.$db.';charset=utf8', $user,$pwd);

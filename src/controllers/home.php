@@ -14,7 +14,7 @@ $func = function() use ($layout) {
 
 $auth = function(){
 echo "auth";
-return false;
+return true;
 
 };
 

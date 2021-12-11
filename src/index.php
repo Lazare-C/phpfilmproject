@@ -9,11 +9,6 @@ foreach (glob(__DIR__.'/controllers/*.php') as $filename)
 }
 //define
 
-foreach (glob(__DIR__.'/controllers/*.php') as $filename)
-{
-    include $filename;
-}
-
 
 Route::add('/login',function(){
     echo 'Welcome :-)';
