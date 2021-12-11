@@ -57,12 +57,10 @@ class Route
                 if (strtolower($method) == strtolower($route['method'])) {
                     $route_match_found = true;
 
-
                     //si on utilise pas de middleware
                     if(gettype($route['function']) != "array"){
                         $route['function'] = array($route['function']);
                     }
-
                     foreach ( $route['function'] as $function) {
                         if (call_user_func_array($function, array([""])) == false) {
                             break;

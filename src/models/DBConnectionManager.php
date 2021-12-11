@@ -1,5 +1,4 @@
 <?php
-//TODO: FAIRE LA DBConnectionManager
 class DBConnectionManager
 {
 
@@ -12,7 +11,7 @@ class DBConnectionManager
 
     public function __construct()
     {
-        $pdo = $this->connectDB();
+        $this->pdo= $this->connectDB();
     }
 
 

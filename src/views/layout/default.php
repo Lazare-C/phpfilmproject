@@ -8,7 +8,7 @@ $title = "title";
  * @param string $content
  * @param string $title
  */
-return function(string $content = "data", string $title = "titre"){
+return function(string $content){
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,7 +18,7 @@ return function(string $content = "data", string $title = "titre"){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?echo $title?></title>
+  <title><?echo "title"?></title>
 </head>
 
 <body>
@@ -42,7 +42,15 @@ return function(string $content = "data", string $title = "titre"){
           <a href="#"
             class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Films</a>
           <a href="#"
-            class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">LazareTiti999</a>
+            class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300"><?php
+
+              if( $_SESSION['username'] == null){
+                  echo "s'enregistrer";
+              }else {
+                  echo $_SESSION['username'];
+              }?>
+
+          </a>
           <a href="#"
             class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Login</a>
           <a href="#"
@@ -52,7 +60,10 @@ return function(string $content = "data", string $title = "titre"){
     </nav>
 
   <div class="bg-indigo-100 py-6 md:py-12">
-    <? echo $content?>
+    <?
+    include($content);
+
+    ?>
   </div>
   <footer class="footer bg-white relative pt-1 border-b-2 border-blue-700">
 
