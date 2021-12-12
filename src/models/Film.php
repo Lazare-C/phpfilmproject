@@ -89,9 +89,12 @@ class Film
      */
     public function getImgSrc()
     {
-        if(file_exists('../static/film/'. $this->getId() .'.png')) return '../static/film/'. $this->getId() .'.png';
-        else return 'static/film/default.png';
-
+        if(file_exists('static/film/'. $this->getId() .'.png')) {
+            return 'static/film/' . $this->getId() . '.png';
+        }
+        else {
+            return 'static/film/default.png';
+        }
     }
 
     /**
