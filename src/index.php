@@ -17,8 +17,25 @@ include_once (__DIR__.'/utils/environment.php');
 addDotEnv(".env");
 
 
+//start session
+session_start();
+
+
+
 Route::add('/test',function(){
     echo 'Welcome :-)';
+});
+
+Route::add('/session',function(){
+    $_SESSION['debug'] = 'test';
+    print_r('session status' .session_status());
+    print_r($_SESSION);
+});
+Route::add('/post',function(){
+    print_r($_POST);
+});
+Route::add('/get',function(){
+    print_r($_GET);
 });
 
 Route::run('/');

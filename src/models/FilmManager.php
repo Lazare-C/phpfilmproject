@@ -23,6 +23,8 @@ class FilmManager
     $q->execute();
   }
 
+
+  //TODO PAS FAIT
   public function delete(Film $film): bool
   {
       $q = $this->_db->prepare('DELETE FROM film(WHERE id = vid) VALUES(:vid');
@@ -33,10 +35,11 @@ class FilmManager
   public function get($id): ?Film
   {
     $id = (int) $id;
-
-    $q = $this->_db->query('SELECT * FROM film WHERE id = '.$id);
+      $q = $this->_db->prepare('SELECT * FROM film WHERE id =:idFilm');
+      $q->bindValue(':idFilm', $id);
 
       try {
+          $q->execute();
           $donnees = $q->fetch(PDO::FETCH_ASSOC);
           return new Film($donnees);
       }catch (Error $e){

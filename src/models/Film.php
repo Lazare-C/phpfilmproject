@@ -6,7 +6,8 @@ class Film
         $nom,
         $annee,
         $nb_vote,
-        $score;
+        $score,
+        $img_src;
 
     public function __construct(array $donnees)
     {
@@ -22,7 +23,7 @@ class Film
         $this->setNb_vote($donnees['nbVotants']);
         $this->setId($donnees['id']);
 
-
+        if($donnees['img_src'])  $this->setImgSrc($donnees['img_src']);
 
         foreach ($donnees as $key => $value)
         {
@@ -80,6 +81,23 @@ class Film
     {
         return $this->score;
     }
+
+    /**
+     * @return string
+     */
+    public function getImgSrc()
+    {
+        return $this->img_src;
+    }
+
+    /**
+     * @param string $img_src
+     */
+    public function setImgSrc($img_src): void
+    {
+        $this->img_src = $img_src;
+    }
+
 
 
 
