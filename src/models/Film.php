@@ -37,6 +37,7 @@ class Film
 
     public function nomValide()
     {
+
         return !empty($this->nom);
     }
 
@@ -95,7 +96,7 @@ class Film
 
     public function setNom($nom)
     {
-        if (is_string($nom) && $this->nomValide())
+        if (is_string($nom))
         {
             $this->nom = $nom;
         }
@@ -120,4 +121,10 @@ class Film
             $this->score = $score;
         }
     }
+
+    public function __toString()
+    {
+       return ("Le film: " . self::getNom(). " avec l'id: " . self::getId());
+    }
+
 }

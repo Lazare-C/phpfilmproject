@@ -7,10 +7,17 @@ foreach (glob(__DIR__.'/controllers/*.php') as $filename)
 {
     include $filename;
 }
-//define
+//import des models
+foreach (glob(__DIR__.'/models/*.php') as $filename)
+{
+    include $filename;
+}
+//import des utils
+include_once (__DIR__.'/utils/environment.php');
+addDotEnv(".env");
 
 
-Route::add('/login',function(){
+Route::add('/test',function(){
     echo 'Welcome :-)';
 });
 

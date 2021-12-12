@@ -6,9 +6,10 @@ class FilmManager
      * @var PDO $_db
      */
     private $_db; // Instance de PDO
-  public function __construct($db)
+  public function __construct(PDO $db)
   {
     $this->_db = $db;
+    print_r($this->_db);
   }
 
   public function add(Film $film)
@@ -30,25 +31,32 @@ class FilmManager
       return $q->execute();
   }
 
-  public function get($id): Film
+  public function get($id): ?Film
   {
     $id = (int) $id;
 
     $q = $this->_db->query('SELECT * FROM film WHERE id = '.$id);
-    $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
-    return new Film($donnees);
+      try {
+          $donnees = $q->fetch(PDO::FETCH_ASSOC);
+          return new Film($donnees);
+      }catch (Error $e){
+          return null;
+  }
   }
 
-  public function getList(): Film
+    /**
+     * @return Film
+     */
+  public function getList()
   {
       /* @var Film $films */
       $films = [];
-
-    $q = $this->_db->query('SELECT * FROM film ORDER BY nom');
+      $q = $this->_db->query('SELECT * FROM film ORDER BY nom');
 
       while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {
+        print_r($donnees);
       $films[] = new Film($donnees);
     }
 
