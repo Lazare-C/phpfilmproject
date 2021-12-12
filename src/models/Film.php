@@ -22,6 +22,7 @@ class Film
         $this->setAnnee($donnees['annee']);
         $this->setNb_vote($donnees['nbVotants']);
         $this->setId($donnees['id']);
+        $this->setImgSrc($donnees['img_src']? $donnees['img_src'] : 'static/film/default.png');
 
         if($donnees['img_src'])  $this->setImgSrc($donnees['img_src']);
 
@@ -35,6 +36,7 @@ class Film
             }
         }
     }
+
 
     public function nomValide()
     {
@@ -87,7 +89,9 @@ class Film
      */
     public function getImgSrc()
     {
-        return $this->img_src;
+        if(file_exists('../static/film/'. $this->getId() .'.png')) return '../static/film/'. $this->getId() .'.png';
+        else return 'static/film/default.png';
+
     }
 
     /**
