@@ -19,7 +19,7 @@ class Film
 
         $this->setNom($donnees['nom']);
         $this->setAnnee($donnees['annee']);
-        $this->setNb_vote($donnees['nb_vote']);
+        $this->setNb_vote($donnees['nbVotants']);
         $this->setId($donnees['id']);
 
 

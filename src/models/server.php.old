@@ -1,4 +1,4 @@
-<?php
+<?php/*
 session_start();
 
 $username = "";
@@ -74,5 +74,5 @@ if (isset($_POST['login_user'])) {
         }
     }
   }
-  
+  */
   ?>

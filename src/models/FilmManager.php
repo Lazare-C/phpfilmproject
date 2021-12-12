@@ -9,7 +9,6 @@ class FilmManager
   public function __construct(PDO $db)
   {
     $this->_db = $db;
-    print_r($this->_db);
   }
 
   public function add(Film $film)
@@ -56,7 +55,6 @@ class FilmManager
 
       while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {
-        print_r($donnees);
       $films[] = new Film($donnees);
     }
 
