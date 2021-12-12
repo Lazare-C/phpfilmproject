@@ -1,7 +1,6 @@
-<?php include('server.php') ?>
 <div class="h-screen bg-indigo-100 flex justify-center items-center">
 	<div class="lg:w-2/5 md:w-1/2 w-2/3">
-		<form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="register.php">
+		<form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="" method="post">
             <?php include('errors.php'); ?>
 			<h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">S'enregistrer</h1>
 			<div>
@@ -23,7 +22,7 @@
 							<button type="submit" name="reg_user" class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">S'enregistrer</button>
 		</form>
         <p>
-  		Already a member? <a href="login.php">Sign in</a>
+  		Vous avez déja un compte? <a href="login">Sign in</a>
   	    </p>
 	</div>
-</div> 
+</div>

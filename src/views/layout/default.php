@@ -42,12 +42,13 @@ return function(string $content){
           <a href="#"
             class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Films</a>
           <a href="#"
-            class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300"><?php
+            class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">
+              <?php
 
-              if( $_SESSION['username'] == null){
+              if($_SESSION['user'] == null){
                   echo "s'enregistrer";
               }else {
-                  echo $_SESSION['username'];
+                  echo $_SESSION['user'];
               }?>
 
           </a>

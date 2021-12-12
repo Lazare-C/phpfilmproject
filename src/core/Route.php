@@ -7,13 +7,12 @@ class Route
     private static $pathNotFound = null;
     private static $methodNotAllowed = null;
 
-    public static function add($expression, $function,$query = [],  $method = 'get')
+    public static function add($expression, $function, $method = 'get')
     {
         array_push(self::$routes, array(
             'expression' => $expression,
             'function' => $function,
-            'query' => $query,
-            'method' => $method
+            'method' => $method,
         ));
     }
 
@@ -44,19 +43,19 @@ class Route
         $route_match_found = false;
 
         foreach (self::$routes as $route) {
+
             if ($basepath != '' && $basepath != '/') {
                 $route['expression'] = '(' . $basepath . ')' . $route['expression'];
+
             }
 
-            $expr = $route['expression'];
 
-            if ($expr == $path) {
+            if ($route['expression'] == $path) {
 
                 $path_match_found = true;
 
                 if (strtolower($method) == strtolower($route['method'])) {
                     $route_match_found = true;
-
                     //si on utilise pas de middleware
                     if(gettype($route['function']) != "array"){
                         $route['function'] = array($route['function']);
@@ -70,23 +69,29 @@ class Route
                 }
             }
 
-            if ($route_match_found == false) {
 
-                if ($path_match_found) {
-                    header("HTTP/1.0 405 Method Not Allowed");
-                    if (self::$methodNotAllowed) {
-                       echo "method not allowed";
-                    }
-                } else {
-                    header("HTTP/1.0 404 Not Found");
-                    if (self::$pathNotFound) {
-                        echo "method not found";
-                    }
+        }
+
+
+        if ($route_match_found == false) {
+
+            if ($path_match_found) {
+                header("HTTP/1.0 405 Method Not Allowed");
+               //TODO AJOUTER UN CONTROLLER POUR LES ERREURS
+                echo "pas la bonne methode! " .$method ;
+                if (self::$methodNotAllowed) {
+                    echo "method not allowed";
                 }
-
+            } else {
+                header("HTTP/1.0 404 Not Found");
+                //TODO AJOUTER UNE PAGE 404
+                if (self::$pathNotFound) {
+                    echo "method not found";
+                }
             }
 
         }
+
     }
 }
 
