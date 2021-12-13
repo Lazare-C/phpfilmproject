@@ -37,24 +37,22 @@ return function(string $content){
 
         <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
           <a href="#" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Home</a>
-          <a href="#"
+          <a href="../actors"
             class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Acteurs</a>
-          <a href="#"
+          <a href="../films"
             class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Films</a>
-          <a href="#"
-            class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300"><?php
+          <?php
 
-              if( $_SESSION['username'] == null){
-                  echo "s'enregistrer";
-              }else {
-                  echo $_SESSION['username'];
+              if( $_SESSION['user'] == null){ ?>
+                <a href="../login"
+                  class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Connexion</a>
+                <a href="../register"
+                  class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">S'enregistrer</a><?
+              }else {?>
+                <a 
+                  class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"><? echo $_SESSION['user']; ?></a> <?
               }?>
-
-          </a>
-          <a href="#"
-            class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Login</a>
-          <a href="#"
-            class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Signup</a>
+          
         </div>
       </div>
     </nav>
