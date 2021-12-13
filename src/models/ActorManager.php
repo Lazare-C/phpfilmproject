@@ -17,7 +17,7 @@ class ActorManager
     $q = $this->_db->prepare('INSERT INTO acteurs(nom, prenom) VALUES(:nom, :prenom)');
 
     $q->bindValue(':nom', $actor->getNom());
-    $q->bindValue(':annee', $actor->getPrenom());
+    $q->bindValue(':prenom', $actor->getPrenom());
     $q->execute();
   }
 
