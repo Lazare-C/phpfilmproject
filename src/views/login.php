@@ -8,7 +8,7 @@
       </div>
 					<div>
 						<label class="text-gray-800 font-semibold block my-3 text-md" for="password">Mot de passe</label>
-						<input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="password" id="password" placeholder="Mot de passe" />
+						<input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="password" name="password" id="password" placeholder="Mot de passe" />
       </div>
 							<button type="submit" name="login_user" class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Connexion</button>
 		</form>
