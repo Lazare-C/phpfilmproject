@@ -15,7 +15,6 @@ $func = function () use ($actorsView, $layout) {
     $dbConnection = new DBConnectionManager();
     $actorsManager = new ActorManager($dbConnection->getPdo());
     $GLOBALS['actors'] = $actorsManager->getList();
-    print_r($GLOBALS['actors']);
     $layout($actorsView);
 };
 
