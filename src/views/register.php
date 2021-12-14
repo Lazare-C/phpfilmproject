@@ -36,7 +36,7 @@
             <button type="submit" name="reg_user" class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">S'enregistrer</button>
         </form>
         <p>
-            Vous avez déja un compte? <a href="login">Sign in</a>
+            Vous avez déja un compte? <a href="login">Connectez-vous !</a>
         </p>
     </div>
 </div>

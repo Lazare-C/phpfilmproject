@@ -29,3 +29,17 @@ $func = function () use ($filmView, $layout) {
     }
 };
 Route::add('/film', $func, 'get');
+
+$vote = function () use ($filmView, $layout) {
+
+    $dbConnection = new DBConnectionManager();
+    $filmManager = new FilmManager($dbConnection->getPdo());
+    $film = $filmManager->get($_GET['id']);
+    $film->addVote();
+    $filmManager->update($film);
+    $_SESSION['vote'][$film->getId()] = true;
+    header('Location: /film?id=' . $film->getId());
+
+};
+
+Route::add('/film', $vote, 'post');

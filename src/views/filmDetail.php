@@ -22,6 +22,18 @@ $film = $GLOBALS['film'];
                     <?php
                 }
                 ?>
+                                <br> 
+                <? if ($_SESSION['vote'][$film->getId()] != true) {?>
+   
+                <p class="text-center text-2xl text-gray-600 font-sans">Noté le film : </p>
+                <form class="text-center" method="post" >
+                    <input class="w-s bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="number" step="0.5" min="0" max="10" name="vote" id="vote"   />
+                    <br>
+                    <button type="submit"  class="w-s mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Ajouter le vote</button>
+                </form>
+                <?}else{?>
+                <p class="text-center text-2xl text-gray-400 font-sans">Vous avez déjà noté ce film</p> <?}?>
+
 
 
                 <?

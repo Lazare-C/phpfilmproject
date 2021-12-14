@@ -61,6 +61,32 @@ return function(string $content){
             }
             ?>
 
+			
+			<?php if( $_SESSION['user'] != null){ 
+				if( $_SESSION['user']->getIsAdmin() == true){ 
+            if($GLOBALS['path'] == "/filmAdd"){
+                ?>
+                <a href="../filmAdd" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Ajouter un Film</a>
+                <?php
+            }else{
+                ?>
+                <a href="../filmAdd" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Ajouter un Film</a>
+                <?php
+            }
+            ?>
+
+			<?php
+            if($GLOBALS['path'] == "/actorAdd"){
+                ?>
+                <a href="../ActorAdd" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Ajouter un acteur</a>
+                <?php
+            }else{
+                ?>
+                <a href="../actorAdd" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Ajouter un acteurs</a>
+                <?php
+            }}}
+            ?>
+
           <?php
 
 

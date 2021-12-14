@@ -129,6 +129,11 @@ class Film
         $this->nb_vote = $nb_vote;
     }
 
+    public function addVote()
+    {
+        $this->nb_vote++;
+    }
+
     public function setScore($score)
     {
         $score = floatval($score);
