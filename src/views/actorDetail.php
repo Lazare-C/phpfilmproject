@@ -22,7 +22,10 @@ $actor = $GLOBALS['actor'];
                     //check if user is admin
                     if($_SESSION['user']->getIsAdmin() == true){
                         ?>
-                        <a href="actorEdit?id=<?echo $actor->getId();?>" class="text-center text-2xl text-gray-600 font-sans">Modifier</a>
+                        <div class="text-center mt-6 ">
+                        <a href="actorEdit?id=<?echo $actor->getId();?>" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-green-400">Modifier</a>
+                        <a href="actorRemove?id=<?echo $actor->getId();?>" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-red-600">Supprimer</a>
+                        </div>
                         <?
                     }
                 }?>

@@ -8,19 +8,19 @@
                     <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Ajouter un film</h1>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="nom">Nom du film</label>
-                        <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="nom" id="nom" placeholder="Nom du film" />
+                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="text" name="nom" id="nom" placeholder="Nom du film" />
                     </div>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="annee">Année</label>
-                        <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="number" min="1800" name="annee" id="annee" placeholder="Année"  />
+                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="number" min="1800" name="annee" id="annee" placeholder="Année"  />
                     </div>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="score">Score</label>
-                        <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" min="0" max="10" type="number" step="0.01" name="score" id="score" placeholder="Score"  />
+                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" min="0" max="10" type="number" step="0.01" name="score" id="score" placeholder="Score"  />
                     </div>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="nb_vote">Nombre de Vote</label>
-                        <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="number" name="nb_vote" id="nb_vote" placeholder="Nombre de Vote"  />
+                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="number" name="nb_vote" id="nb_vote" placeholder="Nombre de Vote"  />
                     </div>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="imgsrc">Affiche</label>

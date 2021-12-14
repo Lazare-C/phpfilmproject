@@ -5,7 +5,6 @@ $data = [];
 ?>
 
 
-    <h1>ACTORS LIST</h1>
 
 
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-12 mb-12">

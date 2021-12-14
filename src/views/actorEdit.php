@@ -8,11 +8,11 @@
                     <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Editer le profil de <?php echo $GLOBALS['actor']->getNom(); ?></h1>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="nom">Prenom</label>
-                        <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" value="<?php echo $GLOBALS['actor']->getPrenom(); ?>" type="text" name="prenom" id="prenom" placeholder="Prenom" />
+                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" value="<?php echo $GLOBALS['actor']->getPrenom(); ?>" type="text" name="prenom" id="prenom" placeholder="Prenom" />
                     </div>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="annee">Nom</label>
-                        <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" value="<?php echo $GLOBALS['actor']->getNom(); ?>" type="text"  name="nom" id="nom" placeholder="Nom"  />
+                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" value="<?php echo $GLOBALS['actor']->getNom(); ?>" type="text"  name="nom" id="nom" placeholder="Nom"  />
                     </div>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="imgsrc">Photo</label>

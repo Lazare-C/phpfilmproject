@@ -5,7 +5,7 @@ $data = [];
 ?>
 
 
-    <h1>FILMS LIST</h1>
+
 <?php
 
 /** @var Film $film */
