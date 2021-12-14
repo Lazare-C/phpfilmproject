@@ -4,7 +4,8 @@ class Actor
 {
     protected $id,
         $nom,
-        $prenom;
+        $prenom,
+        $img_src;
 
     public function __construct(array $donnees)
     {
@@ -18,6 +19,9 @@ class Actor
         $this->setNom($donnees['nom']);
         $this->setPrenom($donnees['prenom']);
         $this->setId($donnees['id']);
+        if($donnees['img_src'])  $this->setImgSrc($donnees['img_src']);
+
+
     }
 
     public function nomValide()
@@ -74,6 +78,29 @@ class Actor
         if (is_string($prenom)){
             $this->prenom = $prenom;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getImgSrc()
+    {
+        if(file_exists('static/actor/'. $this->getId() .'.png')) {
+            return 'static/actor/' . $this->getId() . '.png';
+        }
+        else {
+            return 'static/actor/default.png';
+        }
+    }
+
+    /**
+     * @param string $img_src
+     */
+    public function setImgSrc($img_src): void
+    {
+        if($img_src) $this->img_src = $img_src;
+
+
     }
 
 

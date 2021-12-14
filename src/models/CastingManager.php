@@ -40,7 +40,7 @@ class CastingManager
 
     public function castingByFilm(Film $film) : array
     {
-        $q = $this->_db->prepare('SELECT * FROM Casting LEFT JOIN acteurs on Casting.acteur_id = acteurs.id WHERE Casting.acteur_id = :id');
+        $q = $this->_db->prepare('SELECT * FROM Casting LEFT JOIN acteurs on Casting.acteur_id = acteurs.id WHERE Casting.film_id = :id');
         $q->bindValue(':id', $film->getId(), PDO::PARAM_INT);
         $q->execute();
         $data = $q->fetchAll(PDO::FETCH_ASSOC);

@@ -13,9 +13,12 @@ $func = function () use ($filmView, $layout) {
 
     $dbConnection = new DBConnectionManager();
     $filmManager = new FilmManager($dbConnection->getPdo());
+    $castingManager = new CastingManager($dbConnection->getPdo());
+
 
     if($_GET['id'] != null && is_numeric($_GET['id'])) {
         $GLOBALS['film'] = $filmManager->get($_GET['id']);
+        $GLOBALS['casting']['actors'] = $castingManager->castingByFilm($GLOBALS['film']);
         if($GLOBALS['film'] != null) {
             $layout($filmView);
         }else{

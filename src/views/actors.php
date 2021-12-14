@@ -14,16 +14,16 @@ $data = [];
             <?
 foreach ($GLOBALS['actors'] as $actor){
  ?>
-    
+
             <article class="w-4/5 bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200">
                 <div class="relative  w-full h-80 md:h-64 lg:h-44">
-                    <img src="<?echo $image?>"
+                    <img src="<?echo $actor->getImgSrc();?>"
                         alt="loremipsum dolor sit amet"
                         class="w-11/12 rounded-lg m-4 h-full object-center object-cover">
                 </div>
                 <div class="px-3 py-4">
                     <h3 class="text-sm text-gray-500 pb-2">
-                        <h5 class="text-gray-900 font-bold text-xl tracking-tight mb-2 dark:text-white"><?echo $actor->getNom();?> <?echo $actor->getPrenom();?> </h5> 
+                        <h5 class="text-gray-900 font-bold text-xl tracking-tight mb-2 dark:text-white"><?echo $actor->getNom();?> <?echo $actor->getPrenom();?> </h5>
                     </h3>
                     <a href="/actor?id=<?echo $actor->getId();?>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Description
@@ -32,7 +32,7 @@ foreach ($GLOBALS['actors'] as $actor){
                 </div>
             </article>
 
-<?php  
+<?php
 }
 ?>
         </section>

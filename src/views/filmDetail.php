@@ -14,6 +14,16 @@ $film = $GLOBALS['film'];
                 <p class="text-center text-2xl text-gray-600 font-sans">Score : <?echo $film->getScore();?></p>
                 <p class="text-center text-2xl text-gray-600 font-sans">Nombre de votes : <?echo $film->getNbVote();?></p>
                 <p class="text-center text-2xl text-gray-600 font-sans">Acteurs : </p>
+
+                <?php
+                foreach ($GLOBALS['casting']['actors'] as $actor){
+                    ?>
+                    <a href="/actor?id=<? echo $actor->getId();?>"> <p class="text-center text-1xl text-blue-600 font-sans"><? echo $actor->getPrenom(). " " . $actor->getPrenom();?></p></a>
+                    <?php
+                }
+                ?>
+
+
                 <?
                 if(isset($_SESSION['user'])){
                     //check if user is admin
