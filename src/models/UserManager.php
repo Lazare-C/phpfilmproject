@@ -10,7 +10,6 @@ class UserManager
     public function __construct(PDO $db)
     {
         $this->_db = $db;
-        print_r($this->_db);
     }
 
     public function add(User $user)
@@ -20,6 +19,7 @@ class UserManager
             $q->bindValue(':idUser', $user->getUsername());
             $q->execute();
             if($q->fetch() !=null){
+                $GLOBALS['error'] = 'Username already exist';
                return 'Username already exist';
             }
         }catch (Error $e){
@@ -36,8 +36,6 @@ class UserManager
         }else{
             return 'Une erreur est survenue';
         }
-
-
     }
 
     //TODO PAS FAIT
@@ -55,33 +53,35 @@ class UserManager
         try {
             $q->execute();
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
-            print_r($donnees);
             if($donnees == null){
+                $GLOBALS['error'] = 'User not found';
                     return 'User not found';
                 }
 
-            print_r( 'password hasé: '.$donnees['pwd']);
-            print_r('mdp tapé: ' . $user->getPassword());
             if(self::isValidPassword($user->getPassword(), $donnees['pwd'])){
+
+                if($donnees['login']) $donnees['username'] = $donnees['login'];
+                if($donnees['pwd']) $donnees['password'] = $donnees['pwd'];
+                if($donnees['admin']) $donnees['isadmin'] = $donnees['admin'];
+
                 return new User($donnees);
             }else{
+                $GLOBALS['error'] = 'bad Password';
                 return 'Bad Password';
             }
         }catch (Error $e){
+            $GLOBALS['error'] = 'bad Username';
             return 'Bad Username';
         }
     }
 
     public static function isValidPassword($password, $hash) :bool {
-
         if(password_verify($password, $hash)){
             return true;
         }else{
             return false;
         }
-
     }
-
 
     public function update(Film $film)
     {

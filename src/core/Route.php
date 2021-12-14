@@ -35,6 +35,8 @@ class Route
         } else {
             $path = '/';
         }
+        $GLOBALS['path'] = $path;
+
         // Get current request method
         $method = $_SERVER['REQUEST_METHOD'];
 
@@ -49,7 +51,6 @@ class Route
 
             }
 
-
             if ($route['expression'] == $path) {
 
                 $path_match_found = true;
@@ -61,15 +62,13 @@ class Route
                         $route['function'] = array($route['function']);
                     }
                     foreach ( $route['function'] as $function) {
-                        if (call_user_func_array($function, array([""])) == false) {
+                        if (call_user_func($function) == false) {
                             break;
                         }
                     }
                     break;
                 }
             }
-
-
         }
 
 
@@ -84,9 +83,8 @@ class Route
                 }
             } else {
                 header("HTTP/1.0 404 Not Found");
-                //TODO AJOUTER UNE PAGE 404
                 if (self::$pathNotFound) {
-                    echo "method not found";
+                    call_user_func(self::$pathNotFound);
                 }
             }
 

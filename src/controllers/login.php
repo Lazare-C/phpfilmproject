@@ -13,33 +13,30 @@ $func = function () use ($loginView, $layout) {
 };
 
 
-Route::add('/login', $func, 'get');
+Route::add('/login', array($GLOBALS['isNotAuth'] ,$func), 'get');
 
 
-$login = function () {
+$login = function () use ($loginView, $layout) {
 
     $dbConnection = new DBConnectionManager();
     $userManager = new UserManager($dbConnection->getPdo());
 
-    $user = new User(array('username' => $_POST['username'], 'password' =>  $_POST['password'], 'email' =>  $_POST['email']));
-
+    $user = new User(array('username' => $_POST['username'], 'password' =>  $_POST['password']));
 
     $connexion = $userManager->login($user);
     if(!is_string($connexion)){
-        echo "ajout réussi";
         $_SESSION['user'] = $connexion;
         header('Location: /');
+        exit();
     }else{
-        echo $connexion;
+        $layout($loginView);
     }
-
 };
 
-
-Route::add('/login', $login, 'post');
+Route::add('/login', array($GLOBALS['isNotAuth'], $login), 'post');
 
 Route::add('/logout', function(){
-    session_destroy();
+    $_SESSION['user'] = null;
     header('Location: /');
 }, 'get');
 

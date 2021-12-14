@@ -14,7 +14,6 @@ class Film
         $this->hydrate($donnees);
     }
 
-
     public function hydrate(array $donnees)
     {
 
@@ -26,15 +25,7 @@ class Film
 
         if($donnees['img_src'])  $this->setImgSrc($donnees['img_src']);
 
-        foreach ($donnees as $key => $value)
-        {
-            $method = 'set'.ucfirst($key);
 
-            if (method_exists($this, $method))
-            {
-                $this->$method($value);
-            }
-        }
     }
 
 
@@ -102,12 +93,10 @@ class Film
      */
     public function setImgSrc($img_src): void
     {
-        $this->img_src = $img_src;
+        if($img_src) $this->img_src = $img_src;
+
+
     }
-
-
-
-
 
     public function setId($id)
     {

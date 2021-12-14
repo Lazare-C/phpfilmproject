@@ -18,7 +18,7 @@ return function(string $content){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?echo "title"?></title>
+  <title><?echo $GLOBALS['title']?></title>
 </head>
 
 <body>
@@ -36,12 +36,33 @@ return function(string $content){
         </div>
 
         <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
-          <a href="#" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Home</a>
-          <a href="../actors"
-            class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Acteurs</a>
-          <a href="../films"
-            class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Films</a>
+         <!-- <a href="#" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Home</a>-->
+             <?php
+             if($GLOBALS['path'] == "/actors"){
+             ?>
+                 <a href="../actors" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Acteurs</a>
+                  <?php
+                }else{
+                  ?>
+                  <a href="../actors" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Acteurs</a>
+                  <?php
+                }
+             ?>
+
+            <?php
+            if($GLOBALS['path'] == "/films"){
+                ?>
+                <a href="../films" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Films</a>
+                <?php
+            }else{
+                ?>
+                <a href="../films" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Films</a>
+                <?php
+            }
+            ?>
+
           <?php
+
 
               if( $_SESSION['user'] == null){ ?>
                 <a href="../login"
@@ -49,10 +70,10 @@ return function(string $content){
                 <a href="../register"
                   class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">S'enregistrer</a><?
               }else {?>
-                <a 
-                  class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"><? echo $_SESSION['user']; ?></a> <?
+                <a href="/logout"
+                  class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"><? echo $_SESSION['user']->getUsername(); ?></a> <?
               }?>
-          
+
         </div>
       </div>
     </nav>

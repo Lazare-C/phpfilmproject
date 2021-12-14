@@ -17,12 +17,17 @@ class User
 
     public function hydrate(array $donnees)
     {
-        $this->setId($donnees['id']? $donnees['id'] : null);
-        $this->setUsername($donnees['username']);
-        $this->setPassword($donnees['password']);
-        $this->setEmail($donnees['email']);
-        $this->setIsAdmin($donnees['isadmin']? $donnees['isadmin'] : false);
 
+
+        if($donnees['username']) {
+            $this->setId($donnees['id'] ? $donnees['id'] : null);
+            $this->setUsername($donnees['username']);
+            $this->setPassword($donnees['password']);
+            $this->setEmail($donnees['email']);
+            $this->setIsAdmin($donnees['isadmin'] ? $donnees['isadmin'] : false);
+        }else{
+            echo "error";
+        }
     }
 
     /**
@@ -44,9 +49,14 @@ class User
     /**
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
-        return $this->username;
+        if($this->username) {
+            return $this->username;
+        }else {
+            return "";
+        }
+
     }
 
     /**

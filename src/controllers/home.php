@@ -9,7 +9,7 @@ $layout = require(__DIR__ . '/../views/layout/default.php');
 $func = function () use ($layout) {
 
     $content = "la data";
-    $layout($content, "data");
+    $layout($content);
 };
 
 $auth = function () {
@@ -18,4 +18,4 @@ $auth = function () {
     return true;
 };
 
-Route::add('/', array($auth, $func), 'get');
+Route::add('/',$func, 'get');

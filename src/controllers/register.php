@@ -15,10 +15,10 @@ $func = function () use ($registerView, $layout) {
 };
 
 
-Route::add('/register', $func, 'get');
+Route::add('/register', array($GLOBALS['isNotAuth'],$func), 'get');
 
 
-$register = function () {
+$register = function () use ($registerView, $layout) {
 
     $dbConnection = new DBConnectionManager();
     $userManager = new UserManager($dbConnection->getPdo());
@@ -32,7 +32,9 @@ $register = function () {
         $_SESSION['user'] = $ajout;
         header('Location: /');
     }else{
+
         echo $ajout;
+        $layout($registerView);
     }
 
 };
