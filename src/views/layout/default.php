@@ -65,10 +65,28 @@ return function(string $content){
 
 
               if( $_SESSION['user'] == null){ ?>
-                <a href="../login"
-                  class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Connexion</a>
-                <a href="../register"
-                  class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">S'enregistrer</a><?
+                    <?php
+                if($GLOBALS['path'] == "/login"){
+                    ?>
+                    <a href="../login" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Connexion</a>
+                    <?php
+                }else{
+                    ?>
+                    <a href="../login" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Connexion</a>
+                    
+                    <?php
+                }
+                if($GLOBALS['path'] == "/register"){
+                  ?>
+                  <a href="../register" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">S'enregistrer</a>
+                  <?php
+              }else{
+                  ?>
+                  <a href="../register" class="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">S'enregistrer</a>
+                  
+                  <?php
+              }
+                
               }else {?>
                 <a href="/logout"
                   class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"><? echo $_SESSION['user']->getUsername(); ?></a> <?

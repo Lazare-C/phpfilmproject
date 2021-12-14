@@ -9,7 +9,6 @@ class ActorManager
   public function __construct(PDO $db)
   {
     $this->_db = $db;
-    print_r($this->_db);
   }
 
   public function add(Actor $actor)

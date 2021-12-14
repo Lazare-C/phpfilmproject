@@ -26,7 +26,6 @@ $filmAdd = function () {
     $film = new Film(array('nom' => $_POST['nom'], 'annee' =>  $_POST['annee'], 'score' =>  $_POST['score'], 'nbVotants' =>  $_POST['nb_vote'], 'imgsrc' =>  $_POST['imgsrc']));
 
     $ajout = $filmManager->add($film);
-    print_r($film);
     if(!is_string($ajout)){
      echo "ajout réussi";
     }else{
