@@ -5,7 +5,7 @@ $GLOBALS['isAdmin'] = function(): bool
     if (isset($_SESSION['user'])){
 
 
-        if ($_SESSION['user']->isAdmin() == true) {
+        if ($_SESSION['user']->getIsAdmin() == true) {
             return true;
         } else {
             header('Location: /');
@@ -22,7 +22,7 @@ $GLOBALS['isAdmin'] = function(): bool
 $GLOBALS['isNotAdmin'] = function(): bool
 {
     if (isset($_SESSION['user'])) {
-        if ($_SESSION['user']->isAdmin() == true) {
+        if ($_SESSION['user']->getIsAdmin() == true) {
             header('Location: /');
             exit();
             return false;
