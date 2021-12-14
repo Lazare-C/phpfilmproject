@@ -2,7 +2,7 @@
 $GLOBALS['isAuth'] = function(): bool
 {
 
-    if($_SESSION['user']){
+    if(isset($_SESSION['user'])){
         return true;
     }else{
         header('Location: /register');
@@ -13,7 +13,7 @@ $GLOBALS['isAuth'] = function(): bool
 
 $GLOBALS['isNotAuth'] = function(): bool
 {
-    if($_SESSION['user']){
+    if(isset($_SESSION['user'])){
         header('Location: /');
         exit();
         return false;
