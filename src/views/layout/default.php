@@ -27,7 +27,7 @@ return function(string $content){
       <div class="container px-4 mx-auto md:flex md:items-center">
 
         <div class="flex justify-between items-center">
-          <a href="#" class="font-bold text-xl text-indigo-600">MetaCriticDeux</a>
+          <a href="/" class="font-bold text-xl text-indigo-600">MetaCriticDeux</a>
           <button
             class="border border-solid border-gray-600 px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden"
             id="navbar-toggle">

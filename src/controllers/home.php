@@ -1,21 +1,16 @@
 <?php
 
-/** @param string $layout
- * @param string $title
- * @var array $layout
- */
+
 $layout = require(__DIR__ . '/../views/layout/default.php');
+$homeView = (__DIR__ . '/../views/home.php');
 
-$func = function () use ($layout) {
 
-    $content = "la data";
-    $layout($content);
+
+$func = function () use ($homeView, $layout) {
+
+    
+    $layout($homeView);
 };
 
-$auth = function () {
-    echo "auth";
-    $_SESSION["username"] = "PSEUDO";
-    return true;
-};
 
-Route::add('/',$func, 'get');
+Route::add('/', $func, 'get');
