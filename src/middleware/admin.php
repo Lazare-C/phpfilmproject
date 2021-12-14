@@ -8,12 +8,12 @@ $GLOBALS['isAdmin'] = function(): bool
         if ($_SESSION['user']->isAdmin() == true) {
             return true;
         } else {
-            header('Location: /register');
+            header('Location: /');
             exit();
             return false;
         }
     }else{
-        header('Location: /register');
+        header('Location: /');
         exit();
         return false;
     }
