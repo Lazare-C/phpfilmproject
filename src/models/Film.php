@@ -19,6 +19,7 @@ class Film
 
         $this->setNom($donnees['nom']);
         $this->setAnnee($donnees['annee']);
+        $this->setScore($donnees['score']);
         $this->setNb_vote($donnees['nbVotants']);
         $this->setId($donnees['id']);
         $this->setImgSrc($donnees['img_src']? $donnees['img_src'] : 'static/film/default.png');

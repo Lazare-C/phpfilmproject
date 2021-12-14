@@ -15,7 +15,7 @@ $func = function () use ($filmView, $layout) {
 };
 
 
-Route::add('/filmAdd', $func, 'get');
+Route::add('/filmAdd', array($GLOBALS['isAdmin'],$func), 'get');
 
 
 $filmAdd = function () {
@@ -23,10 +23,10 @@ $filmAdd = function () {
     $dbConnection = new DBConnectionManager();
     $filmManager = new FilmManager($dbConnection->getPdo());
     
-    $film = new Film(array('nom' => $_POST['nom'], 'annee' =>  $_POST['annee'], 'score' =>  $_POST['score'], 'nb_vote' =>  $_POST['nb_vote'], 'imgsrc' =>  $_POST['imgsrc']));
+    $film = new Film(array('nom' => $_POST['nom'], 'annee' =>  $_POST['annee'], 'score' =>  $_POST['score'], 'nbVotants' =>  $_POST['nb_vote'], 'imgsrc' =>  $_POST['imgsrc']));
 
     $ajout = $filmManager->add($film);
-    
+    print_r($film);
     if(!is_string($ajout)){
      echo "ajout réussi";
     }else{
@@ -36,4 +36,4 @@ $filmAdd = function () {
 };
 
 
-Route::add('/filmAdd', $filmAdd, 'post');
+Route::add('/filmAdd', array($GLOBALS['isAdmin'],$filmAdd), 'post');

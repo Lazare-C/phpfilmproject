@@ -65,7 +65,7 @@ class FilmManager
 
   public function update(Film $film)
   {
-    $q = $this->_db->prepare('UPDATE film SET nom = :nom, annee = :annee, score = :score, vote = :vote WHERE id = :id');
+    $q = $this->_db->prepare('UPDATE film SET nom = :nom, annee = :annee, score = :score, nbVotants = :vote WHERE id = :id');
 
     $q->bindValue(':nom', $film->getNom());
     $q->bindValue(':annee', $film->getAnnee());
