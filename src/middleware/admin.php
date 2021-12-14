@@ -2,8 +2,16 @@
 $GLOBALS['isAdmin'] = function(): bool
 {
 
-    if($_SESSION['user']->isAdmin() == true){
-        return true;
+    if (isset($_SESSION['user'])){
+
+
+        if ($_SESSION['user']->isAdmin() == true) {
+            return true;
+        } else {
+            header('Location: /register');
+            exit();
+            return false;
+        }
     }else{
         header('Location: /register');
         exit();
@@ -11,12 +19,16 @@ $GLOBALS['isAdmin'] = function(): bool
     }
 };
 
-$GLOBALS['isNotAuth'] = function(): bool
+$GLOBALS['isNotAdmin'] = function(): bool
 {
-    if($_SESSION['user']->isAdmin() == true){
-        header('Location: /');
-        exit();
-        return false;
+    if (isset($_SESSION['user'])) {
+        if ($_SESSION['user']->isAdmin() == true) {
+            header('Location: /');
+            exit();
+            return false;
+        } else {
+            return true;
+        }
     }else{
         return true;
     }
