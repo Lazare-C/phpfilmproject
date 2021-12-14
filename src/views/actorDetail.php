@@ -10,6 +10,13 @@ $actor = $GLOBALS['actor'];
                             class="w-3/5 rounded-lg m-4  object-center object-cover m-auto mb-10">
                 <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans"><?echo $actor->getNom();?> <?echo $actor->getPrenom();?></h1>
                 <p class="text-center text-2xl text-gray-600 font-sans">Films : </p>
+                <?php
+                foreach ($GLOBALS['casting']['films'] as $film){
+                    ?>
+                    <a href="/film?id=<? echo $film->getId();?>"> <p class="text-center text-1xl text-blue-600 font-sans"><? echo $film->getNom(). ", " . $film->getAnnee();?></p></a>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>

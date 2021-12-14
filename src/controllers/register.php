@@ -6,11 +6,7 @@
 $layout = require(__DIR__ . '/../views/layout/default.php');
 $registerView = (__DIR__ . '/../views/register.php');
 
-
-
 $func = function () use ($registerView, $layout) {
-
-
     $layout($registerView);
 };
 
@@ -25,15 +21,11 @@ $register = function () use ($registerView, $layout) {
 
     $user = new User(array('username' => $_POST['username'], 'password' =>  $_POST['password'], 'email' =>  $_POST['email']));
 
-
-    $ajout = $userManager->add($user);
-    if(!is_string($ajout)){
-     echo "ajout réussi";
-        $_SESSION['user'] = $ajout;
+    $register = $userManager->add($user);
+    if(!is_string($register)){
+        $_SESSION['user'] = $register;
         header('Location: /');
     }else{
-
-        echo $ajout;
         $layout($registerView);
     }
 

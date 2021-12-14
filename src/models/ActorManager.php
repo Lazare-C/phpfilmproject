@@ -20,6 +20,7 @@ class ActorManager
     $q->execute();
   }
 
+  //TODO Marche pas
   public function delete(Actor $actor): bool
   {
       $q = $this->_db->prepare('DELETE FROM acteurs(WHERE id = vid) VALUES(:vid');
@@ -58,6 +59,7 @@ class ActorManager
     return $actors;
   }
 
+  //TODO Marche pas
   public function update(Actor $actor)
   {
     $q = $this->_db->prepare('UPDATE acteurs SET nom = :nom, prenom = :prenom WHERE id = :id');
