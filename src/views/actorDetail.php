@@ -17,7 +17,17 @@ $actor = $GLOBALS['actor'];
                     <?php
                 }
                 ?>
+                <?
+                if(isset($_SESSION['user'])){
+                    //check if user is admin
+                    if($_SESSION['user']->getIsAdmin() == true){
+                        ?>
+                        <a href="actorEdit?id=<?echo $actor->getId();?>" class="text-center text-2xl text-gray-600 font-sans">Modifier</a>
+                        <?
+                    }
+                }?>
             </div>
+
         </div>
     </div>
 
