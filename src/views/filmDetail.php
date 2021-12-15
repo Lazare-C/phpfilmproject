@@ -43,7 +43,7 @@ $film = $GLOBALS['film'];
                         ?>
                         <div class="text-center mt-6 ">
                         <a href="filmEdit?id=<?echo $film->getId();?>" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-green-400">Modifier</a>
-                        <a href="filmEdit?id=<?echo $film->getId();?>" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-red-600">Supprimer</a>
+                        <a href="filmRemove?id=<?echo $film->getId();?>" class="p-2 lg:px-4 md:mx-2 text-white rounded bg-red-600">Supprimer</a>
                         </div>
                         <?
                     }

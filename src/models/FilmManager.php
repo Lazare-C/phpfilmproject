@@ -26,8 +26,8 @@ class FilmManager
   //TODO PAS FAIT
   public function delete(Film $film): bool
   {
-      $q = $this->_db->prepare('DELETE FROM film(WHERE id = vid) VALUES(:vid');
-      $q->bindValue(':vid', $film->getId());
+      $q = $this->_db->prepare('DELETE FROM film WHERE id = :id');
+      $q->bindValue(':id', $film->getId());
       return $q->execute();
   }
 
