@@ -11,7 +11,10 @@ class Film
 
     public function __construct(array $donnees)
     {
+
         $this->hydrate($donnees);
+
+
     }
 
     public function hydrate(array $donnees)
@@ -22,10 +25,14 @@ class Film
         $this->setScore($donnees['score']);
         $this->setNb_vote($donnees['nbVotants']);
         $this->setId($donnees['id']);
-        $this->setImgSrc($donnees['img_src']? $donnees['img_src'] : 'static/film/default.png');
 
-        if($donnees['img_src'])  $this->setImgSrc($donnees['img_src']);
+        if(isset($donnees['imgsrc'])){
+            if($donnees['imgsrc']['size'] < 50000 && $donnees['imgsrc']['type'] == "image/png" ||$donnees['imgsrc']['type'] == "image/jpeg" ){
 
+                $this->setImgSrc($donnees['imgsrc']);
+
+            }
+        }
 
     }
 
@@ -96,6 +103,7 @@ class Film
     {
         if($img_src) $this->img_src = $img_src;
 
+        move_uploaded_file($img_src['tmp_name'], 'static/film/'. self::getId(). '.png');
 
     }
 

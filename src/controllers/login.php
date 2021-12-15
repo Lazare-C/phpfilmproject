@@ -37,6 +37,7 @@ Route::add('/login', array($GLOBALS['isNotAuth'], $login), 'post');
 
 Route::add('/logout', function(){
     $_SESSION['user'] = null;
+    $_SESSION['vote'] = null;
     header('Location: /');
 }, 'get');
 

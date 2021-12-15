@@ -1,5 +1,8 @@
 /old/
-!/.env
-.idea
-!/src/.env
+/.env
+.idea/
 /src/.env
+/src/static/
+!/src/static/user/default.png
+!/src/static/actor/default.png
+!/src/static/film/default.png
