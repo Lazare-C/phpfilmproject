@@ -23,8 +23,8 @@ class ActorManager
   //TODO Marche pas
   public function delete(Actor $actor): bool
   {
-      $q = $this->_db->prepare('DELETE FROM acteurs(WHERE id = vid) VALUES(:vid');
-      $q->bindValue(':vid', $actor->getId());
+      $q = $this->_db->prepare('DELETE FROM acteurs WHERE id = :id');
+      $q->bindValue(':id', $actor->getId());
       return $q->execute();
   }
 

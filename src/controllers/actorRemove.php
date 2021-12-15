@@ -28,10 +28,12 @@ $actorRemove = function () {
     $dbConnection = new DBConnectionManager();
     $actorManager = new ActorManager($dbConnection->getPdo());
     $toRemove = $actorManager->get($_GET['id']);
-
-    $ajout = $actorManager->update($toRemove);
+    $castingManager = new CastingManager($dbConnection->getPdo());
+    
+    $castingManager->deleteActor($toRemove);
+    $ajout = $actorManager->delete($toRemove);
     if(!is_string($ajout)){
-     echo "ajout réussi";
+     echo "suppression réussi";
     }else{
         echo $ajout;
     }
