@@ -25,16 +25,14 @@ Route::add('/filmEdit', array($GLOBALS['isAdmin'],$func), 'get');
 
 $filmEdit = function () {
 
-
-
     $dbConnection = new DBConnectionManager();
     $filmManager = new FilmManager($dbConnection->getPdo());
 
     $film = new Film(array('id'=>$_GET['id'],'nom' => $_POST['nom'], 'annee' =>  $_POST['annee'], 'score' =>  $_POST['score'], 'nbVotants' =>  $_POST['nb_vote'], 'imgsrc' =>  $_FILES['imgsrc']));
 
     $ajout = $filmManager->update($film);
-    if(!is_string($ajout)){
-
+    if($ajout){
+        $GLOBALS['succes'] = "Modification réussie!";
     header('location: /film?id='. $film->getId());
     }else{
         echo $ajout;

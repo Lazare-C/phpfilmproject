@@ -18,8 +18,8 @@ class FilmManager
     $q->bindValue(':annee', $film->getAnnee());
     $q->bindValue(':score', $film->getScore());
     $q->bindValue(':nb_vote', $film->getNbVote());
+    return($q->execute());
 
-    $q->execute();
   }
 
 
@@ -73,7 +73,7 @@ class FilmManager
     $q->bindValue(':vote', $film->getNbVote());
     $q->bindValue(':id', $film->getId());
 
-    $q->execute();
+    return($q->execute());
   }
 
 }

@@ -20,18 +20,17 @@ class Film
     public function hydrate(array $donnees)
     {
 
+
         $this->setNom($donnees['nom']);
         $this->setAnnee($donnees['annee']);
         $this->setScore($donnees['score']);
         $this->setNb_vote($donnees['nbVotants']);
         $this->setId($donnees['id']);
 
-        if(isset($donnees['imgsrc'])){
-            if($donnees['imgsrc']['size'] < 50000 && $donnees['imgsrc']['type'] == "image/png" ||$donnees['imgsrc']['type'] == "image/jpeg" ){
+        if(isset($donnees['imgsrc']) && self::getId()){
 
-                $this->setImgSrc($donnees['imgsrc']);
+              $this->setImgSrc($donnees['imgsrc']);
 
-            }
         }
 
     }
@@ -48,7 +47,8 @@ class Film
      */
     public function getId()
     {
-        return $this->id;
+         return $this->id;
+
     }
 
     /**
@@ -97,32 +97,35 @@ class Film
     }
 
     /**
-     * @param string $img_src
+     * @param $img_src
      */
     public function setImgSrc($img_src): void
     {
-        if($img_src) $this->img_src = $img_src;
+        if(self::getId() == null) echo "id null";
 
-        move_uploaded_file($img_src['tmp_name'], 'static/film/'. self::getId(). '.png');
+        if($img_src['size'] < 500000000 && $img_src['type'] == "image/png" ||$img_src['type'] == "image/jpeg" ) {
 
+            if ($img_src) $this->img_src = $img_src;
+
+            move_uploaded_file($img_src['tmp_name'], 'static/film/' . self::getId() . '.png');
+
+           // echo "le fichier a éjé ajouté: ". 'static/film/' . self::getId() . '.png';
+        }      else{
+            echo "erreur sur le fichier";
+        }
     }
 
     public function setId($id)
     {
-        $id = (int) $id;
-
-        if ($id > 0)
-        {
             $this->id = $id;
-        }
+
     }
 
     public function setNom($nom)
     {
-        if (is_string($nom))
-        {
+
             $this->nom = $nom;
-        }
+
     }
 
     public function setAnnee($annee)

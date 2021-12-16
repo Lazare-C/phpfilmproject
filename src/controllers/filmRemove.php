@@ -29,11 +29,11 @@ $filmRemove = function () {
     $filmManager = new FilmManager($dbConnection->getPdo());
     $toRemove = $filmManager->get($_GET['id']);
     $castingManager = new CastingManager($dbConnection->getPdo());
-    
+
     $castingManager->deleteFilm($toRemove);
     $ajout = $filmManager->delete($toRemove);
     if(!is_string($ajout)){
-     echo "suppression réussi";
+     header('location: /films');
     }else{
         echo $ajout;
     }
@@ -42,4 +42,3 @@ $filmRemove = function () {
 
 
 Route::add('/filmRemove', array($GLOBALS['isAdmin'],$filmRemove), 'post');
- 

@@ -17,7 +17,8 @@ class ActorManager
 
     $q->bindValue(':nom', $actor->getNom());
     $q->bindValue(':prenom', $actor->getPrenom());
-    $q->execute();
+    return $q->execute();
+
   }
 
   //TODO Marche pas

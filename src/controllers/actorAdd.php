@@ -22,12 +22,14 @@ $actorAdd = function () {
 
     $dbConnection = new DBConnectionManager();
     $actorManager = new ActorManager($dbConnection->getPdo());
-    
+
     $actor = new Actor(array('nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom']));
     $ajout = $actorManager->add($actor);
-    
+    $actor->setId($dbConnection->getPdo()->lastInsertId());
+
     if(!is_string($ajout)){
-     echo "ajout réussi";
+        $GLOBALS['succes'] = "L'ajout a réussi!";
+        header('location: /actor?id='. $actor->getId());
     }else{
         echo $ajout;
     }

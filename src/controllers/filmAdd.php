@@ -22,12 +22,16 @@ $filmAdd = function () {
 
     $dbConnection = new DBConnectionManager();
     $filmManager = new FilmManager($dbConnection->getPdo());
-    
-    $film = new Film(array('nom' => $_POST['nom'], 'annee' =>  $_POST['annee'], 'score' =>  $_POST['score'], 'nbVotants' =>  $_POST['nb_vote'], 'imgsrc' =>  $_POST['imgsrc']));
+
+    $film = new Film(array('nom' => $_POST['nom'], 'annee' =>  $_POST['annee'], 'score' =>  $_POST['score'], 'nbVotants' =>  $_POST['nb_vote'], 'imgsrc' => $_FILES['imgsrc']));
 
     $ajout = $filmManager->add($film);
-    if(!is_string($ajout)){
-     echo "ajout réussi";
+    $film->setId($dbConnection->getPdo()->lastInsertId());
+    $film->setImgSrc($_FILES['imgsrc']);
+
+    if($ajout){
+        $GLOBALS['succes'] = "L'ajout a réussi!";
+     header('location: /film?id='. $film->getId());
     }else{
         echo $ajout;
     }

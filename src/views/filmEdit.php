@@ -26,7 +26,7 @@
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="imgsrc">Affiche</label>
                         <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="file" name="imgsrc" id="imgsrc"/>
                     </div>
-                    <button type="submit"  class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Ajouter le film</button>
+                    <button type="submit"  class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Modifier le film</button>
                 </form>
             </div>
         </div>

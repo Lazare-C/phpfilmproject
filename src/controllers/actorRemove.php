@@ -29,12 +29,14 @@ $actorRemove = function () {
     $actorManager = new ActorManager($dbConnection->getPdo());
     $toRemove = $actorManager->get($_GET['id']);
     $castingManager = new CastingManager($dbConnection->getPdo());
-    
+
     $castingManager->deleteActor($toRemove);
     $ajout = $actorManager->delete($toRemove);
-    if(!is_string($ajout)){
-     echo "suppression réussi";
+    if($ajout){
+        $GLOBALS['succes'] = "La suppression a été effectuée";
+        header('location: /films');
     }else{
+        $GLOBALS['error'] = "La suppression n'a pas abouti";
         echo $ajout;
     }
 
@@ -42,4 +44,3 @@ $actorRemove = function () {
 
 
 Route::add('/actorRemove', array($GLOBALS['isAdmin'],$actorRemove), 'post');
- 
