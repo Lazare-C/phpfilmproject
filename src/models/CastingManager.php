@@ -17,8 +17,8 @@ class CastingManager
     {
         $q = $this->_db->prepare('INSERT INTO Casting(film_id, acteur_id) VALUES(:film_id, :acteur_id)');
 
-        $q->bindValue(':film_id', $actor->getId());
-        $q->bindValue(':acteur_id', $film->getId());
+        $q->bindValue(':film_id', $film->getId());
+        $q->bindValue(':acteur_id', $actor->getId());
         $q->execute();
     }
 

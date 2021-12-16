@@ -18,7 +18,7 @@ $film = $GLOBALS['film'];
                 <?php
                 foreach ($GLOBALS['casting']['actors'] as $actor){
                     ?>
-                    <a href="/actor?id=<? echo $actor->getId();?>"> <p class="text-center text-1xl text-blue-600 font-sans"><? echo $actor->getPrenom(). " " . $actor->getPrenom();?></p></a>
+                    <a href="/actor?id=<? echo $actor->getId();?>"> <p class="text-center text-1xl text-blue-600 font-sans"><? echo $actor->getPrenom(). " " . $actor->getNom();?></p></a>
                     <?php
                 }
                 ?>
