@@ -19,9 +19,11 @@ class Actor
         $this->setNom($donnees['nom']);
         $this->setPrenom($donnees['prenom']);
         $this->setId($donnees['id']);
-        if($donnees['img_src'])  $this->setImgSrc($donnees['img_src']);
+        if(isset($donnees['imgsrc']) && self::getId()){
 
+            $this->setImgSrc($donnees['imgsrc']);
 
+        }
     }
 
     public function nomValide()
@@ -80,23 +82,24 @@ class Actor
         }
     }
 
+
     /**
      * @return string
      */
     public function getImgSrc()
     {
-        if(file_exists('static/actor/'. $this->getId() .'.png')) {
+        if (file_exists('static/actor/' . $this->getId() . '.png')) {
             return 'static/actor/' . $this->getId() . '.png';
-        }
-        else {
+        } else {
             return 'static/actor/default.png';
         }
     }
 
-    /**
-     * @param string $img_src
-     */
-    public function setImgSrc($img_src): void
+
+        /**
+         * @param $img_src
+         */
+        public function setImgSrc($img_src): void
     {
         if(self::getId() == null) echo "id null";
 
@@ -106,11 +109,10 @@ class Actor
 
             move_uploaded_file($img_src['tmp_name'], 'static/actor/' . self::getId() . '.png');
 
-           // echo "le fichier a éjé ajouté: ". 'static/film/' . self::getId() . '.png';
+            // echo "le fichier a éjé ajouté: ". 'static/film/' . self::getId() . '.png';
         }      else{
             $GLOBALS['succes'] = "Modification échoué !";;
         }
-
 
     }
 

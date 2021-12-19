@@ -69,7 +69,7 @@ class ActorManager
     $q->bindValue(':prenom', $actor->getPrenom());
     $q->bindValue(':id', $actor->getId());
 
-    $q->execute();
+    return $q->execute();
   }
 
 }

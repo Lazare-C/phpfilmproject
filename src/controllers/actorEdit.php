@@ -27,7 +27,7 @@ $actorEdit = function () {
 
     $dbConnection = new DBConnectionManager();
     $actorManager = new ActorManager($dbConnection->getPdo());
-    $actor = new Actor(array('id'=>$_GET['id'],'nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom'],'imgsrc' =>  $_POST['imgsrc']));
+    $actor = new Actor(array('id'=>$_GET['id'],'nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom'], 'imgsrc' =>  $_FILES['imgsrc']));
 
     $ajout = $actorManager->update($actor);
     if(!is_string($ajout)){
@@ -41,4 +41,3 @@ $actorEdit = function () {
 
 
 Route::add('/actorEdit', array($GLOBALS['isAdmin'],$actorEdit), 'post');
- 

@@ -4,7 +4,7 @@
 
 <div class="h-screen bg-indigo-100 flex justify-center items-center">
             <div class="lg:w-2/5 md:w-1/2 w-2/3">
-                <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" method="post" >
+                <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" method="post" enctype="multipart/form-data">
                     <h1 class="text-center text-2xl mb-6 text-gray-600 font-bold font-sans">Editer le profil de <?php echo $GLOBALS['actor']->getNom(); ?></h1>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="nom">Prenom</label>
@@ -21,4 +21,4 @@
                     <button type="submit"  class="w-full mt-6 bg-indigo-600 rounded-lg px-4 py-2 text-lg text-white tracking-wide font-semibold font-sans">Modifier l'acteur</button>
                 </form>
             </div>
-        </div> 
+        </div>
