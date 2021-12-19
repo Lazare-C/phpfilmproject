@@ -33,15 +33,25 @@ Route::add('/castingAdd', $func, 'get');
 
 $castingAdd = function () use ($filmView, $layout) {
 
+
+
+
+
     $dbConnection = new DBConnectionManager();
     $filmManager = new FilmManager($dbConnection->getPdo());
     $castingManager = new CastingManager($dbConnection->getPdo());
-    $actor = new Actor(array('id' => $_POST['acteur']));
-    print_r($actor);
+
     $film = $filmManager->get($_GET['id']);
-    print_r($film);
-    $castingManager->add($actor,$film);
-    //header('Location: /film?id=' . $film->getId());
+    foreach ($_POST['acteur'] as $actor) {
+
+        $actor = new Actor(array('id' => $actor));
+        //print_r($actor);
+        //  print_r($film);
+        $castingManager->add($actor, $film);
+
+
+    }
+    header('Location: /film?id=' . $film->getId());
 
 };
 

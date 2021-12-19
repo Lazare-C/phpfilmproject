@@ -14,15 +14,22 @@ class UserManager
 
     public function add(User $user)
     {
+        if(strlen($user->getPassword()) < 6){
+            $GLOBALS['error'] = 'Password too short';
+            return 'Password too short';
+        }
+
+
         try {
             $q = $this->_db->prepare('SELECT * FROM User WHERE login = :idUser');
             $q->bindValue(':idUser', $user->getUsername());
             $q->execute();
             if($q->fetch() !=null){
                 $GLOBALS['error'] = 'Username already exist';
-               return 'Username already exist';
+                return 'Username already exist';
             }
         }catch (Error $e){
+            $GLOBALS['error'] = 'SQL ERROR';
             return 'une erreur:' . $e;
         }
         $q = $this->_db->prepare('INSERT INTO User(login, email, pwd) VALUES(:login, :email, :pwd)');
@@ -31,9 +38,10 @@ class UserManager
         $q->bindValue(':pwd', self::encrypt($user->getPassword()));
        // $q->bindValue(':vote', $user->getImgSrc());
 
-        if($q->execute() == true) {
+        if($q->execute()) {
             return $user;
         }else{
+            $GLOBALS['error'] = 'Cant add user';
             return 'Une erreur est survenue';
         }
     }

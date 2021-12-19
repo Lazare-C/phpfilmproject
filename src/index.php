@@ -27,7 +27,7 @@ addDotEnv(".env");
 //start session
 session_start();
 
-
+//route de test
 Route::add('/test',function(){
     echo 'Welcome :-)';
 });
@@ -43,6 +43,11 @@ Route::add('/post',function(){
 Route::add('/get',function(){
     print_r($_GET);
 });
+
+//TITRE
+$GLOBALS['title'] = "MetaCriticDeux";
+
+
 
 Route::run('/');
 

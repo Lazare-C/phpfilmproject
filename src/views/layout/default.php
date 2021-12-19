@@ -14,11 +14,18 @@ return function(string $content){
 <html lang="fr">
 
 <head>
+
+    <!-- tailwind CSS -->
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?echo $GLOBALS['title']?></title>
+
 </head>
 
 <body>
@@ -172,7 +179,8 @@ return function(string $content){
        ?>
 
       <?php
-      if($GLOBALS['error']){?>
+      if($GLOBALS['error']){
+          ?>
           <div class="fixed inset-x-0 top-0 flex items-end justify-right px-4 py-6 sm:p-6 justify-end z-30 pointer-events-none">
               <div data-controller="alert" class="max-w-sm w-full shadow-lg rounded px-4 py-3 rounded relative bg-red-400 border-l-4 border-red-700 text-white pointer-events-auto">
                   <div class="p-2">
@@ -197,6 +205,14 @@ return function(string $content){
           $GLOBALS['error'] = null;
       } ?>
 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $("#multiple").select2({
+        placeholder: "Choissiez les acteurs",
+        allowClear: true
+    });
+</script>
 </body>
 
 </html>
