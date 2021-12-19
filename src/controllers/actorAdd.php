@@ -23,9 +23,10 @@ $actorAdd = function () {
     $dbConnection = new DBConnectionManager();
     $actorManager = new ActorManager($dbConnection->getPdo());
 
-    $actor = new Actor(array('nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom']));
+    $actor = new Actor(array('nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom'], 'img_src' => $_POST['img_src']));
     $ajout = $actorManager->add($actor);
     $actor->setId($dbConnection->getPdo()->lastInsertId());
+    $actor->setImgSrc($_FILES['imgsrc']);
 
     if(!is_string($ajout)){
         $GLOBALS['succes'] = "L'ajout a réussi!";

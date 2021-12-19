@@ -19,8 +19,8 @@
                         <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" min="0" max="10" type="number" step="0.01" name="score" id="score" placeholder="Score"  />
                     </div>
                     <div>
-                        <label class="text-gray-800 font-semibold block my-3 text-md" for="nb_vote">Nombre de Vote</label>
-                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="number" name="nb_vote" id="nb_vote" placeholder="Nombre de Vote"  />
+                        <label class="text-gray-800 font-semibold block my-3 text-md" for="nb_vote">Nombre de Votes</label>
+                        <input required class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none" type="number" name="nb_vote" id="nb_vote" placeholder="Nombre de Votes"  />
                     </div>
                     <div>
                         <label class="text-gray-800 font-semibold block my-3 text-md" for="imgsrc">Affiche</label>

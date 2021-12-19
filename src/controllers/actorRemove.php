@@ -34,7 +34,7 @@ $actorRemove = function () {
     $ajout = $actorManager->delete($toRemove);
     if($ajout){
         $GLOBALS['succes'] = "La suppression a été effectuée";
-        header('location: /films');
+        header('location: /actors');
     }else{
         $GLOBALS['error'] = "La suppression n'a pas abouti";
         echo $ajout;

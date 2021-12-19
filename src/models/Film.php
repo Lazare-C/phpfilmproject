@@ -111,7 +111,7 @@ class Film
 
            // echo "le fichier a éjé ajouté: ". 'static/film/' . self::getId() . '.png';
         }      else{
-            echo "erreur sur le fichier";
+            $GLOBALS['succes'] = "Modification échoué !";;
         }
     }
 

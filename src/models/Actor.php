@@ -98,7 +98,18 @@ class Actor
      */
     public function setImgSrc($img_src): void
     {
-        if($img_src) $this->img_src = $img_src;
+        if(self::getId() == null) echo "id null";
+
+        if($img_src['size'] < 500000000 && $img_src['type'] == "image/png" ||$img_src['type'] == "image/jpeg" ) {
+
+            if ($img_src) $this->img_src = $img_src;
+
+            move_uploaded_file($img_src['tmp_name'], 'static/actor/' . self::getId() . '.png');
+
+           // echo "le fichier a éjé ajouté: ". 'static/film/' . self::getId() . '.png';
+        }      else{
+            $GLOBALS['succes'] = "Modification échoué !";;
+        }
 
 
     }

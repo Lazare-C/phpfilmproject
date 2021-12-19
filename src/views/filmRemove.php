@@ -13,7 +13,7 @@
                 </div>
                 <!--footer-->
                 <div class="p-3 mb-40  mt-5 text-center  md:block">
-                    <button href="/home" class="mb-2 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+                    <button href="/" class="mb-2 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
                         Annulé
                     </button>
                     <form method="post">

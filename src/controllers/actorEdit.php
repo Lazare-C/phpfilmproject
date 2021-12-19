@@ -27,12 +27,12 @@ $actorEdit = function () {
 
     $dbConnection = new DBConnectionManager();
     $actorManager = new ActorManager($dbConnection->getPdo());
-    //me suis arreté la 
     $actor = new Actor(array('id'=>$_GET['id'],'nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom'],'imgsrc' =>  $_POST['imgsrc']));
 
     $ajout = $actorManager->update($actor);
     if(!is_string($ajout)){
-     echo "ajout réussi";
+        $GLOBALS['succes'] = "Modification réussie!";
+     header('location: /actor?id='. $actor->getId());
     }else{
         echo $ajout;
     }
