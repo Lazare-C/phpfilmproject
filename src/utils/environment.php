@@ -1,5 +1,5 @@
 <?php
-//fonction volé sur les internet
+//fonction volée sur les internets
 function addDotEnv(String $path = ".env"){
     $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
