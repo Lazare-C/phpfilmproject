@@ -6,14 +6,14 @@ RewriteEngine on
 # set your rewrite base
 RewriteBase /
 
-# Deliver the folder or file directly if it exists on the server
+# Si les fichiers existes, bypass le routeur (images ect...)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Push every request to index.php
 RewriteRule ^(.*)$ index.php [QSA]
 
-# deny acces to .env
+# block l'acces au  .env
 <Files .env>
     Order allow,deny
     Deny from all
