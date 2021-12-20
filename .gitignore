@@ -1,8 +1,10 @@
 /old/
 /.env
+/class/
 .idea/
 /src/.env
 
+#demo images
 !/src/static/user/default.png
 !/src/static/actor/default.png
 !/src/static/film/default.png

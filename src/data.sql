@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : jeu. 07 oct. 2021 à 20:01
+-- Généré le : lun. 20 déc. 2021 à 11:09
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.4.8
 
@@ -38,11 +38,10 @@ CREATE TABLE `acteurs` (
 --
 
 INSERT INTO `acteurs` (`id`, `nom`, `prenom`) VALUES
-(1, 'Leonardo', 'DiCaprio'),
+(1, 'DiCaprio', 'Leonardo'),
 (2, 'Rami', 'Malek'),
-(3, 'Besson', 'Luc'),
-(4, '', ''),
-(5, '', '');
+(7, 'Chevereau', 'Lazare'),
+(10, 'Gueffaf', 'Mohamed');
 
 -- --------------------------------------------------------
 
@@ -62,7 +61,10 @@ CREATE TABLE `Casting` (
 INSERT INTO `Casting` (`film_id`, `acteur_id`) VALUES
 (13, 1),
 (25, 1),
-(13, 3);
+(28, 2),
+(28, 7),
+(28, 10),
+(1646, 10);
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ INSERT INTO `film` (`id`, `nom`, `annee`, `score`, `nbVotants`) VALUES
 (2, 'Pulp Fiction', 1994, 8.4, 11693),
 (3, 'Blade Runner', 1982, 8.6, 8665),
 (4, 'Titanic', 1997, 9.2, 8129),
-(5, 'Braveheart', 1995, 8.4, 8074),
+(5, 'Braveheart', 1995, 8.4, 8075),
 (6, 'Empire Strikes Back, The', 1980, 8.5, 8050),
 (7, 'Shawshank Redemption, The', 1994, 8.8, 7850),
 (8, 'Independence Day', 1996, 7, 7138),
@@ -95,23 +97,22 @@ INSERT INTO `film` (`id`, `nom`, `annee`, `score`, `nbVotants`) VALUES
 (10, 'Raiders of the Lost Ark', 1981, 8.4, 6488),
 (11, '2001: A Space Odyssey', 1968, 8.4, 6413),
 (12, 'Forrest Gump', 1994, 7.8, 6269),
-(13, 'Aliens', 1986, 8.3, 5811),
+(13, 'Aliens', 1986, 8.3, 5816),
 (14, 'Silence of the Lambs, The', 1991, 8.3, 5715),
 (15, 'Princess Bride, The', 1987, 8.4, 5522),
 (16, 'Terminator 2: Judgment Day', 1991, 8, 5513),
 (17, 'Casablanca', 1942, 8.7, 5489),
 (18, 'Monty Python and the Holy Grail', 1974, 8.4, 5319),
 (19, 'Star Trek: First Contact', 1996, 8.2, 5298),
-(20, 'Fargo', 1996, 8.2, 5293),
+(20, 'Fargo', 1996, 8.2, 5294),
 (21, 'Twelve Monkeys', 1995, 8, 5287),
 (22, 'Trainspotting', 1996, 8.1, 5233),
 (23, 'Godfather, The', 1972, 8.7, 5211),
 (24, 'Se7en', 1995, 8.1, 5107),
-(25, 'Back to the Future', 1985, 7.8, 5103),
+(25, 'Back to the Future', 1985, 7.8, 5104),
 (26, 'Rock, The', 1996, 8, 4938),
 (27, 'Reservoir Dogs', 1992, 8.3, 4861),
-(28, 'Apocalypse Now', 1979, 8.3, 4860),
-(30, 'Apollo 13', 1995, 7.8, 4778),
+(28, 'Apocalypse Now', 1979, 8.3, 4872),
 (31, 'Clockwork Orange, A', 1971, 8.4, 4767),
 (32, 'Jurassic Park', 1993, 7.4, 4707),
 (33, 'English Patient, The', 1996, 8.1, 4689),
@@ -124,23 +125,40 @@ INSERT INTO `film` (`id`, `nom`, `annee`, `score`, `nbVotants`) VALUES
 (263, 'Conan the Barbarian', 1981, 6.9, 1271),
 (321, 'Twins', 1988, 6.3, 1126),
 (334, 'Last Action Hero', 1993, 5.9, 1107),
-(410, 'Dave', 1993, 7.4, 962),
 (440, 'Kindergarten Cop', 1990, 6.2, 894),
 (471, 'Running Man, The', 1987, 6.3, 856),
 (629, 'Commando', 1985, 6.1, 673),
 (746, 'Conan the Destroyer', 1984, 5.4, 542),
-(793, 'Money Pit, The', 1986, 5.8, 482),
-(910, 'Brady Bunch Movie, The', 1995, 6.3, 412),
 (932, 'Red Heat', 1988, 5.8, 402),
 (960, 'Terminator 2: 3-D', 1996, 8.7, 384),
 (975, 'Night Shift', 1982, 6.6, 377),
 (1106, 'Junior', 1994, 5.9, 329),
-(1339, 'Jingle All the Way', 1996, 6, 262),
-(1353, 'Outrageous Fortune', 1987, 6.1, 258),
 (1551, 'Raw Deal', 1986, 5, 215),
 (1622, 'Batman and Robin', 1997, 3.9, 1925),
 (1644, 'Red Sonja', 1985, 4.6, 404),
-(1645, 'SharkNado', 2003, 0.3, 1234);
+(1646, 'Les zombies font du ski', 2017, 10, 666);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `User`
+--
+
+CREATE TABLE `User` (
+  `id` int NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `pwd` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `User`
+--
+
+INSERT INTO `User` (`id`, `login`, `pwd`, `email`, `admin`) VALUES
+(4, 'admin', '$2y$10$advVdatxWu4RTDenfYSqF.E8Ft.gXMxwCdDUPKNfgwwV7esF.7fDS', 'admin@admin.fr', 1),
+(5, 'user', '$2y$10$dCsNMv6q92QH29EUF5egre0Fln4USXiiCWwk.ccqi2qzuQGiFrR4a', 'user@user.fr', 0);
 
 --
 -- Index pour les tables déchargées
@@ -166,6 +184,12 @@ ALTER TABLE `film`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `User`
+--
+ALTER TABLE `User`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -173,13 +197,19 @@ ALTER TABLE `film`
 -- AUTO_INCREMENT pour la table `acteurs`
 --
 ALTER TABLE `acteurs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `film`
 --
 ALTER TABLE `film`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1646;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1656;
+
+--
+-- AUTO_INCREMENT pour la table `User`
+--
+ALTER TABLE `User`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
