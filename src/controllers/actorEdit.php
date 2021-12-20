@@ -27,9 +27,10 @@ $actorEdit = function () {
 
     $dbConnection = new DBConnectionManager();
     $actorManager = new ActorManager($dbConnection->getPdo());
-    $actor = new Actor(array('id'=>$_GET['id'],'nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom'], 'imgsrc' =>  $_FILES['imgsrc']));
+    $actor = new Actor(array('id'=>$_GET['id'],'nom' => $_POST['nom'], 'prenom' =>  $_POST['prenom']));
 
     $ajout = $actorManager->update($actor);
+    $actorManager->setImgSrc($actor, $_FILES['imgsrc']);
     if(!is_string($ajout)){
         $GLOBALS['succes'] = "Modification réussie!";
      header('location: /actor?id='. $actor->getId());
